@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        // Función para manejar el envío del formulario
+        function mostrarDatos(event) {
+            event.preventDefault(); // Evita que el formulario se envíe y la página se recargue
+
+            // Obtener los valores del formulario
+            var nombre = document.getElementById("nombre").value;
+            var pais = document.getElementById("pais").value;
+            var colorFavorito = document.getElementById("color").value;
+            var genero = document.querySelector('input[name="genero"]:checked').value;
+            var terminos = document.getElementById("terminos").checked;
+
+            // Mostrar los datos en pantalla
+            var resultado = `
+                <h3>Datos Ingresados:</h3>
+                <p><strong>Nombre:</strong> ${nombre}</p>
+                <p><strong>País:</strong> ${pais}</p>
+                <p><strong>Color Favorito:</strong> <span style="background-color: ${colorFavorito}; padding: 5px; color: white;">${colorFavorito}</span></p>
+                <p><strong>Género:</strong> ${genero}</p>
+                <p><strong>Términos aceptados:</strong> ${terminos ? "Sí" : "No"}</p>
+            `;
+
+            // Insertar los datos en el div de resultado
+            document.getElementById("resultado").innerHTML = resultado;
+        }
+    </script>
+</head>
+<body>
+    <h2>Formulario de Registro</h2>
+    <form id="formulario" onsubmit="mostrarDatos(event)">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required minlength="3" maxlength="50" autocomplete="off" placeholder="Escribe tu nombre completo"><br><br>
+        <label for="correo">Correo:</label>
+        <input type="text" id="email" required minlength="6" maxlength="20" autocomplete="off" placeholder="Escribe tu correo electrónico"><br><br>
+        <label for="contraseña">Contraseña:</label>
+        <input type="password" id="contraseña" placeholder="Escriba su contraseña"><br><br>
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" required minlength="1" maxlength="120" autocomplete="off" placeholder="Introduzca su edad"><br><br>
+        <label for="asignatura">País:</label>
+        <select id="pais">
+            <option value="España">España</option>
+            <option value="España">Belgica</option>
+            <option value="España">Italia</option>
+            <option value="España">Francia</option>
+            <option value="España">Alemania</option>
+            <option value="España">Ucrania</option>
+            <option value="España">Rusia</option>
+            <option value="España">Letonia</option>
+        </select><br><br>
+        <label for="fecha">Fecha de nacimiento:</label>
+        <input type="date" id="fecha">
+        <br><br>
+        <label for="color">Color favorito:</label>
+        <input type="color" id="color"><br><br>
+        <label>Género:</label>
+        <br>
+        <input type="radio" id="masculino" name="genero" value="masculino">
+        <label for="genero">Masculino</label><br>
+        <input type="radio" id="femenino" name="genero" value="femenino">
+        <label for="genero">Femenino</label> <br><br>
+        <input type="checkbox" id="terminos">
+        <label for="terminos">Acepto los términos y condiciones:</label> <br><br>
+        
+        <input type="submit" value="Registrarse">
+    </form>
+
+    <!-- Div donde se mostrarán los datos ingresados -->
+    <div id="resultado"></div>
+    <p><b><i>Hecho por Alejandro Paz Ramos, ¡Gracias por registrarse! 😄😄</i></b></p>
+</body>
+</html>
